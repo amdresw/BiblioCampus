@@ -41,3 +41,18 @@ CREATE TABLE bookAutor (
     CONSTRAINT id_book FOREIGN KEY (id_book) REFERENCES id (books),
     CONSTRAINT id_autor FOREIGN KEY (id_autor) REFERENCES id (autors)
 );
+
+CREATE TABLE publications (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_book INT,
+    publication_date DATE,
+    editor VARCHAR (20),
+    edition VARCHAR (20)
+    CONSTRAINT id_book FOREIGN KEY (id_book) REFERENCES id (books)
+);
+
+CREATE TABLE autors(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20),
+    birthdate VARCHAR (20)
+);
