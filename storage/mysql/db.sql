@@ -13,7 +13,7 @@ CREATE TABLE bookTransaction(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_transaction INT,
     id_book INT,
-    CONSTRAINT id_transaction FOREIGN KEY (id_transaction) REFERENCES id (transactions)
+    CONSTRAINT id_transaction FOREIGN KEY (id_transaction) REFERENCES transactions(id)
 );
 
 CREATE TABLE transactions(
@@ -22,7 +22,7 @@ CREATE TABLE transactions(
     loan_date DATE,
     return_date DATE,
     status VARCHAR (10),
-    CONSTRAINT id_member FOREIGN KEY (id_member) REFERENCES id(members)
+    CONSTRAINT id_member FOREIGN KEY (id_member) REFERENCES members(id)
 );
 
 CREATE TABLE members(
@@ -38,8 +38,8 @@ CREATE TABLE bookAutor (
     id INT  PRIMARY KEY AUTO_INCREMENT,
     id_book INT,
     id_autor INT,
-    CONSTRAINT id_book FOREIGN KEY (id_book) REFERENCES id (books),
-    CONSTRAINT id_autor FOREIGN KEY (id_autor) REFERENCES id (autors)
+    CONSTRAINT fk_book FOREIGN KEY (id_book) REFERENCES books (id),
+    CONSTRAINT id_autor FOREIGN KEY (id_autor) REFERENCES autors (id)
 );
 
 CREATE TABLE publications (
@@ -47,8 +47,8 @@ CREATE TABLE publications (
     id_book INT,
     publication_date DATE,
     editor VARCHAR (20),
-    edition VARCHAR (20)
-    CONSTRAINT id_book FOREIGN KEY (id_book) REFERENCES id (books)
+    edition VARCHAR (20),
+    CONSTRAINT id_book FOREIGN KEY (id_book) REFERENCES books (id)
 );
 
 CREATE TABLE autors(
